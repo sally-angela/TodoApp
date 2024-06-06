@@ -34,7 +34,6 @@ class ListTodoViewModel(application: Application): AndroidViewModel(application)
     fun checkTask(todo: Todo) {
         launch {
             val db = buildDb(getApplication())
-//            db.todoDao().deleteTodo(todo)
             db.todoDao().updateTodoDone(todo.uuid)
 
             todoLD.postValue(db.todoDao().selectAllTodo())
